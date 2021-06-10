@@ -74,7 +74,8 @@
 </div>
 	<script type="text/javascript" src="scripts/miniCart.js"></script>
 </div> <!-- корзина ender -->
-<div>
+
+ <div class="contents">
 	<table>
 		<tr>
 			<td>Логин</td>
@@ -97,7 +98,6 @@
 			<td>${user.address }</td>
 		</tr>
  	</table>
- 	<div class="contents">
  	<form action="GetUntakenOrders" method="post">
  		<input type="button" name="edit" value="Редактировать" onClick="window.location.href='./editProfile.jsp'">
  		<input type="button" name="edit" value="Изменить пароль" onClick="window.location.href='./editPassword.jsp'">
@@ -106,7 +106,6 @@
 			<input type="button" onClick="window.location.href='./adminPage.jsp'" value="Администрирование">
 		</c:if>
 	</form>
-</div>
 </div>
 <div class="errors">
 	<c:if test="${not empty msg }">

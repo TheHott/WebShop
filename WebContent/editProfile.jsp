@@ -10,7 +10,8 @@
 <link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div class="profile">
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники - Информация профиля</h1>
 <table>
 	<tr>
