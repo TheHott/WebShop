@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div>
+<div class="header">
 	<h1>Интернет-магазин компьютерной техники</h1>
 	<table>
 		<tr>
@@ -29,11 +29,12 @@
 			<input type="submit" value="Найти"></form></td>
 		</tr>
 	</table>
-	<!-- Корзина -->
+</div> <!-- header ender -->
+
+<!-- Корзина -->
 <button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
-
-  <div class="modal-content">
+<div class="modal-content">
     <span class="close">&times;</span>
     <c:if test="${cart.getProducts().isEmpty()==false }">
     <table border="1">
@@ -74,14 +75,19 @@
 		<c:if test="${cart.getProducts().isEmpty()!=false }">
 			Корзина пустая!
 		</c:if>
-  </div>
-  <script type="text/javascript" src="scripts/miniCart.js"></script>
 </div>
+	<script type="text/javascript" src="scripts/miniCart.js"></script>
+</div> <!-- корзина ender -->
+
+<div class="contents">
 	<br><a href="testingSite.jsp">Тест функций не для юзеров</a><br>
-<c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>		
+</div>
+
+<div class="errors">
+	<c:if test="${not empty msg }">
+		<h3>${msg}</h3>
+		<c:remove var="msg"/>
+	</c:if>		
 </div>
 </body>
 </html>

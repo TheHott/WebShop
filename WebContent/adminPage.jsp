@@ -7,15 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Страница администратора</title>
+<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div>
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники - Страница администратора</h1>
-Сообщение дня:
-<c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>
 <table>
 	<tr>
 		<td><a href="index.jsp">Домой</a></td>
@@ -30,7 +27,58 @@
 		<input type="submit" value="Найти"></form></td>
 	</tr>
 </table>
-<a href="admin/adminOrder.jsp">Редактировать заказы</a>
+</div> <!-- header ender -->
+
+<!-- Корзина -->
+<button id="myBtn">Открыть корзину</button>
+<div id="myModal" class="modal">
+<div class="modal-content">
+    <span class="close">&times;</span>
+    <c:if test="${cart.getProducts().isEmpty()==false }">
+    <table border="1">
+    	<tr>
+    		<td>ID корзины</td>
+    		<td>Логин владельца</td>
+    		<td>Сумма</td>
+    	</tr>
+    	<tr>
+    		<td>${cart.id }</td>
+    		<td>${cart.ownersLogin }</td>
+    		<td>${cart.totalCost } руб.</td>
+    	</tr>
+    </table>
+    <table border="1">
+    	<tr>
+    		<td>ID товара</td>
+    		<td>Наименование</td>
+    		<td>Цена</td>
+    		<td>Количество</td>
+    		<td></td>
+    	</tr>
+    <c:forEach var="product" items="${cart.getProducts()}">
+		<tr>
+			<td>${product.ID }</td>
+			<td><a href="GetProduct?id=${product.ID}">${product.name }</a></td>
+			<td>${product.costPerOne} руб.</td>
+			<td>${product.amount} шт.</td>
+			<td><form action="DeleteCartProduct" method="post">
+			<input type="hidden" name="prodName" value="${product.name }">
+			<input type="submit" value="Удалить">
+			</form></td>
+		</tr>
+		</c:forEach>
+		</table>
+		<button onclick='location.href="cart.jsp"'>Перейти в корзину</button>
+		</c:if>
+		<c:if test="${cart.getProducts().isEmpty()!=false }">
+			Корзина пустая!
+		</c:if>
+</div>
+	<script type="text/javascript" src="scripts/miniCart.js"></script>
+</div> <!-- корзина ender -->
+
+<div class="contents">
+<div><a href="admin/adminOrder.jsp">Редактировать заказы</a>
 <a href="admin/adminSpecs.jsp">Редактировать характеристики товаров</a>
 <form action="AddSpec" method="post" autocomplete="off">
   	<h1>Добавить хар-ку товара</h1>
@@ -105,5 +153,13 @@
  	 </form>
  	 Товар добавлен? Это ${prodCreated}
   	</div>
+</div>
+
+<div class="errors">
+	<c:if test="${not empty msg }">
+		<h3>${msg}</h3>
+		<c:remove var="msg"/>
+	</c:if>		
+</div>
 </body>
 </html>

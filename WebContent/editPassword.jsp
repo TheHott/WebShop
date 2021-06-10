@@ -7,9 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Изменить пароль</title>
+<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div>
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники - Изменить пароль</h1>
 <table>
 	<tr>

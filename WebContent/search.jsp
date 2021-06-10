@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
+
 <div class="nexturl">
 <c:url var="nextUrl" value="/search">
 	<c:forEach items="${param}" var="entry">
@@ -27,7 +28,8 @@
 	</c:forEach>
 </c:url>
 </div>
-<div>
+
+<div class="header">
 	<h1>Интернет-магазин компьютерной техники - Поиск</h1>
 	<table>
 		<tr>
@@ -45,7 +47,9 @@
 			<input type="submit" value="Найти"></form></td>
 		</tr>
 	</table>
-	<!-- Корзина -->
+</div> <!-- header ender -->
+
+<!-- Корзина -->
 <button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
 
@@ -92,7 +96,9 @@
 		</c:if>
   </div>
   <script type="text/javascript" src="scripts/miniCart.js"></script>
-</div>
+</div> <!-- корзина ender -->
+
+<div class="contents">
 <table>
 	<tr>
 		<c:forEach var="category" items="${categories}" varStatus="loop">
@@ -171,11 +177,13 @@
 <c:if test="${products.isEmpty()!=false}">
 <br>По вашему запросу ничего не найдено.
 </c:if>
-<br><br>TODO: Сделать так, чтоб нужно было писать только текст и цифры, без пробелов/символов и др.
- <c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>	
+</div>
+
+<div class="errors">
+	<c:if test="${not empty msg }">
+		<h3>${msg}</h3>
+		<c:remove var="msg"/>
+	</c:if>		
 </div>
 </body>
 </html>

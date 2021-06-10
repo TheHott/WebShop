@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div>
+<div class="header">
 <h1>Интернет-магазин компьютерной техники - ${product.name}</h1>
 <table>
 	<tr>
@@ -29,6 +29,7 @@
 		<input type="submit" value="Найти"></form></td>
 	</tr>
 </table>
+</div> <!-- header ender -->
 <!-- Корзина -->
 <button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
@@ -77,7 +78,9 @@
 		</c:if>
   </div>
   <script type="text/javascript" src="scripts/miniCart.js"></script>
-</div>
+</div> <!-- корзина ender -->
+
+<div class="contents">
 <br>Изображение<br>
 <a href="${product.picLink}"><img src="${product.picLink}" width="100" height="100" border=2></a>
 <table border="1">
@@ -119,6 +122,8 @@
 	</c:forEach>
 	</c:if>
 </table>
+</div>
+<div class="errors">
 <c:if test="${not empty msg }">
 	<h3>${msg}</h3>
 	<c:remove var="msg"/>

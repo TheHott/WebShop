@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники</h1>
 <table>
 	<tr>
@@ -28,7 +30,9 @@
 		<input type="submit" value="Найти"></form></td>
 	</tr>
 </table>
-<!-- Trigger/Open The Modal -->
+</div> <!-- header ender -->
+
+<!-- Корзина -->
 <button id="myBtn">Открыть корзину</button>
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -76,9 +80,10 @@
 		</c:if>
   </div>
   <script type="text/javascript" src="scripts/miniCart.js"></script>
-</div>
+</div> <!-- корзина ender -->
+
+<div class="contents">
 <br><a href="catalog?page=1">Каталог</a> -> <b>${categoryName }</b>
-<div>
 <h1>Категории</h1>
 <table>
 <tr><c:forEach var="category" items="${categories}">
@@ -135,6 +140,9 @@
 	<c:if test="${Integer!=param.page}"><a href="GetCategoryProducts?id=${param.id}&page=${Integer}&sort=${param.sort}">${Integer}</a></c:if>
 </c:forEach>
 <c:if test="${param.page!=pagesArr.get(pagesArr.size()-1)}"><a href="GetCategoryProducts?id=${param.id}&page=${param.page+1}&sort=${param.sort}">▶</a></c:if>
+</div>
+
+<div class="errors">
 <c:if test="${not empty msg }">
 	<h3>${msg}</h3>
 	<c:remove var="msg"/>

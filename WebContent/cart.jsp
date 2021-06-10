@@ -6,11 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+<meta charset="UTF-8">
 <title>Моя корзина</title>
+<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
-<div>
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники - Корзина</h1>
 <table>
 	<tr>
@@ -28,6 +30,9 @@
 		<input type="submit" value="Найти"></form></td>
 	</tr>
 </table>
+</div> <!-- header ender -->
+
+<div class="contents">
 <c:if test="${cart.getProducts().isEmpty()==false }">
 <table border="1">
     	<tr>
@@ -79,10 +84,13 @@
 <c:if test="${cart.getProducts().isEmpty()!=false }">
 Корзина пустая!
 </c:if>
-<c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>
+</div>
+
+<div class="errors">
+	<c:if test="${not empty msg }">
+		<h3>${msg}</h3>
+		<c:remove var="msg"/>
+	</c:if>		
 </div>
 </body>
 </html>

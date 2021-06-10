@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <title>Каталог</title>
 <link rel="stylesheet" type="text/css" href="css/modal.css">
-
 </head>
 <body>
+
+<div class="header">
 <h1>Интернет-магазин компьютерной техники</h1>
-<div>
 <table>
 	<tr>
 		<td><a href="index.jsp">Домой</a></td>
@@ -30,6 +30,8 @@
 		<input type="submit" value="Найти"></form></td>
 	</tr>
 </table>
+</div> <!-- header ender -->
+
 <!-- Корзина -->
 <button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
@@ -75,15 +77,11 @@
 		<c:if test="${cart.getProducts().isEmpty()!=false }">
 			Корзина пустая!
 		</c:if>
-  </div>
-  <script type="text/javascript" src="scripts/miniCart.js"></script>
-</div>
+ </div>
+	<script type="text/javascript" src="scripts/miniCart.js"></script>
+</div> <!-- корзина ender -->
 
-<c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>
-
+<div class="contents">
 <h1>Категории</h1>
 <table>
 <tr><c:forEach var="category" items="${categories}">
@@ -141,10 +139,13 @@
 <c:if test="${Integer!=param.page}"><a href="catalog?page=${Integer}&sort=${param.sort}">${Integer}</a></c:if>
 </c:forEach>
 <c:if test="${param.page!=pagesArr.get(pagesArr.size()-1)}"><a href="catalog?page=${param.page+1}&sort=${param.sort}">▶</a></c:if>
- <c:if test="${not empty msg }">
-	<h3>${msg}</h3>
-	<c:remove var="msg"/>
-</c:if>
+</div>
+
+<div class="errors">
+	<c:if test="${not empty msg }">
+		<h3>${msg}</h3>
+		<c:remove var="msg"/>
+	</c:if>		
 </div>
 </body>
 </html>
