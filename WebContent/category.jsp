@@ -28,16 +28,13 @@
 		<input type="search" name="req" placeholder="Найти товар" required>
 		<input type="hidden" name="page" value="1">
 		<input type="submit" value="Найти"></form></td>
+		<td><button class="cart-btn" id="myBtn"></button></td>
 	</tr>
 </table>
 </div> <!-- header ender -->
 
 <!-- Корзина -->
-<button id="myBtn">Открыть корзину</button>
-<!-- The Modal -->
 <div id="myModal" class="modal">
-
-  <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
     <c:if test="${cart.getProducts().isEmpty()==false }">
@@ -52,7 +49,7 @@
     		<td>${cart.ownersLogin }</td>
     		<td>${cart.totalCost } руб.</td>
     	</tr>
-    </table>
+    </table><br>
     <table border="1">
     	<tr>
     		<td>ID товара</td>
@@ -83,33 +80,37 @@
 </div> <!-- корзина ender -->
 
 <div class="contents">
-<br><a href="catalog?page=1">Каталог</a> -> <b>${categoryName }</b>
-<h1>Категории</h1>
 <table>
-<tr><c:forEach var="category" items="${categories}">
+<tr><td><b>Категории:</b></td>
+<c:forEach var="category" items="${categories}">
 <c:if test="${!category.name.equals(categoryName) }"><td><a href="GetCategoryProducts?id=${category.ID}&page=1">${category.name}</a></td></c:if>
-<c:if test="${category.name.equals(categoryName) }"><td><b>${category.name}</b></td></c:if>
+<c:if test="${category.name.equals(categoryName) }"><td><span class="underline">${category.name}</span></td></c:if>
 </c:forEach></tr>
-</table>
-Сортировать по
+</table><br>
 <form action="GetCategoryProducts" method="get">
 <input type="hidden" name="page" value="1">
 <input type="hidden" name="id" value="${param.id }">
-<input type="radio" name="sort" value="IDHigh2Low" checked>От новых к старым (по умолчанию)
-<input type="radio" name="sort" value="IDLow2High"
-<c:if test="${param.sort eq 'IDLow2High' }">
-	checked
-</c:if>>От старых к новым
-<input type="radio" name="sort" value="CostLow2High"
-<c:if test="${param.sort eq 'CostLow2High' }">
-	checked
-</c:if>>Цена по возрастанию
-<input type="radio" name="sort" value="CostHigh2Low"
-<c:if test="${param.sort eq 'CostHigh2Low' }">
-	checked
-</c:if>>Цена по убыванию
-<input type="submit" value="Обновить">
-</form>
+<table border="1">
+<tr>
+	<td>Сортировка: </td>
+	<td><input type="radio" name="sort" value="IDHigh2Low" checked>От новых к старым</td>
+	<td><input type="radio" name="sort" value="IDLow2High"
+	<c:if test="${param.sort eq 'IDLow2High' }">
+		checked
+	</c:if>>От старых к новым</td>
+	<td><input type="radio" name="sort" value="CostLow2High"
+	<c:if test="${param.sort eq 'CostLow2High' }">
+		checked
+	</c:if>>Цена по возрастанию</td>
+	<td><input type="radio" name="sort" value="CostHigh2Low"
+	<c:if test="${param.sort eq 'CostHigh2Low' }">
+		checked
+	</c:if>>Цена по убыванию</td>
+	<td><input type="submit" value="Обновить"></td>
+</tr>
+</table>
+</form><br>
+
 <table border="1">
 	<tr>
 		<td>ID</td>

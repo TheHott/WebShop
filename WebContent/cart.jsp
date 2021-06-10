@@ -17,7 +17,7 @@
 <table>
 	<tr>
 		<td><a href="index.jsp">Домой</a></td>
-		<td><a href="GetCatalog">Каталог</a></td>
+		<td><a href="./catalog?page=1&sort=IDHigh2Low">Каталог</a></td>
 		<td><b>Корзина</b></td>
 		<c:if test="${user==null }"><td><a href="login.jsp">Авторизация</a></td>
 		<td><a href="signUp.jsp">Регистрация</a></td></c:if>
@@ -28,9 +28,58 @@
 		<input type="search" name="req" placeholder="Найти товар" required>
 		<input type="hidden" name="page" value="1">
 		<input type="submit" value="Найти"></form></td>
+		<td><button class="cart-btn" id="myBtn"></button></td>
 	</tr>
 </table>
 </div> <!-- header ender -->
+
+<!-- Корзина -->
+<div id="myModal" class="modal">
+
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <c:if test="${cart.getProducts().isEmpty()==false }">
+    <table border="1">
+    	<tr>
+    		<td>ID корзины</td>
+    		<td>Логин владельца</td>
+    		<td>Сумма</td>
+    	</tr>
+    	<tr>
+    		<td>${cart.id }</td>
+    		<td>${cart.ownersLogin }</td>
+    		<td>${cart.totalCost } руб.</td>
+    	</tr>
+    </table><br>
+    <table border="1">
+    	<tr>
+    		<td>ID товара</td>
+    		<td>Наименование</td>
+    		<td>Цена</td>
+    		<td>Количество</td>
+    		<td></td>
+    	</tr>
+    <c:forEach var="product" items="${cart.getProducts()}">
+		<tr>
+			<td>${product.ID }</td>
+			<td><a href="GetProduct?id=${product.ID}">${product.name }</a></td>
+			<td>${product.costPerOne} руб.</td>
+			<td>${product.amount} шт.</td>
+			<td><form action="DeleteCartProduct" method="post">
+			<input type="hidden" name="prodName" value="${product.name }">
+			<input type="submit" value="Удалить">
+			</form></td>
+		</tr>
+		</c:forEach>
+		</table>
+		<button onclick='location.href="cart.jsp"'>Перейти в корзину</button>
+		</c:if>
+		<c:if test="${cart.getProducts().isEmpty()!=false }">
+			Корзина пустая!
+		</c:if>
+ </div>
+	<script type="text/javascript" src="scripts/miniCart.js"></script>
+</div> <!-- корзина ender -->
 
 <div class="contents">
 <c:if test="${cart.getProducts().isEmpty()==false }">
@@ -45,7 +94,7 @@
     		<td>${cart.ownersLogin }</td>
     		<td>${cart.totalCost } руб.</td>
     	</tr>
-    </table>
+    </table><br>
     <table border="1">
     	<tr>
     		<td>ID товара</td>
@@ -59,7 +108,7 @@
 			<td>${product.ID }</td>
 			<td><a href="GetProduct?id=${product.ID}">${product.name }</a></td>
 			<td><form action="SetCartsProductAmount" method="post" autocomplete="off">
-			<input type="submit" name="amountChange" value="=" id="eqBtn"> ← Эта кнопка не должна быть видна
+			<input type="submit" name="amountChange" value="=" id="eqBtn" class="hdn-btn">
 			<input type="submit" name="amountChange" value="-">
 			<input type="hidden" name="prodName" value="${product.name }"> 
 			<input type="text" name="amount" value="${product.amount}" size="1" required>
@@ -76,10 +125,6 @@
 		<c:if test="${user!=null }"><form action="CreateOrder" method="post">
 			<input type="submit" value="Купить">
 		</form></c:if>
-		TODO Написать скрипт чтоб не вводились символы<br>
-		TODO При нажатии на + - или = кнопки должны не работать до перезагрузки страницы<br>
-		JavaScript?<br>
-		TODO Сделать подтверждение "уверены ли вы?" при нажатии на Купить<br>
 </c:if>
 <c:if test="${cart.getProducts().isEmpty()!=false }">
 Корзина пустая!

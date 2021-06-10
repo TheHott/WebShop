@@ -1,4 +1,4 @@
-body {font-family: Arial, Helvetica, sans-serif;}
+body {font-family: Calibri, Helvetica, sans-serif;}
 
 /* The Modal (background) */
 .modal {
@@ -17,11 +17,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+	text-align: center;
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
 }
 
 /* The Close Button */
@@ -37,4 +38,103 @@ body {font-family: Arial, Helvetica, sans-serif;}
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+body {
+	background-size: 100%;
+	background-image: url('../pics/bg3.jpg');
+	background-attachment: fixed;
+	font-size: 24px;
+	color: black;
+    /* -webkit-text-stroke: 1px white; */
+}
+
+a {
+	/* color: white; */
+	color: black;
+	/* -webkit-text-stroke: 1px black; */
+	text-decoration: none;
+}
+
+a:hover {
+	color: blue;
+	text-decoration: underline;
+	-webkit-text-stroke: 0;
+}
+
+.contents {
+	opacity: 0.7;
+	background: #afd5f5;
+	border-radius: 4px;
+	width: 80%;
+	margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    /* font-size: 30px;
+    font-weight: 600;
+    background: #B2D4EA;
+    opacity: 0.7;
+    font: 2em Arial, sans-serif;
+    text-shadow: black 1px 1px 0, black -1px -1px 0, 
+                 black -1px 1px 0, black 1px -1px 0;*/
+}
+
+.header{
+	opacity: 0.7;
+	background: #afd5f5;
+    display: block;
+    text-align: center;
+    padding: 10px;
+	border-radius: 4px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.errors{
+	opacity: 0.7;
+	background: #afd5f5;
+	display: block;
+    text-align: center;
+    padding: 10px;
+	border-radius: 4px;
+	width: 80%;
+	margin: 0 auto;
+}
+
+table{
+	margin-left: auto;
+    margin-right: auto;
+	border: 1px black;
+	border-collapse: collapse;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+}
+
+.underline {
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.cart-btn {
+	background-image: url('../pics/cart.png');
+	background-size: cover;
+    width: 22px;
+    height: 22px;
+    border-radius: 24px;
+}
+
+input {
+	border-radius: 24px;
+}
+
+button {
+	border-radius: 24px;
+}
+
+.hdn-btn {
+	display:none;
 }

@@ -15,21 +15,20 @@
 <table>
 	<tr>
 		<td><a href="index.jsp">Домой</a></td>
-		<td><a href="GetCatalog">Каталог</a></td>
+		<td><a href="./catalog?page=1&sort=IDHigh2Low">Каталог</a></td>
 		<td><a href="cart.jsp">Корзина</a></td>
 		<td><b>Профиль</b></td>
-		<c:if test="${user.role=='admin' }"><td><a href="adminPage.jsp">Администрирование</a></td></c:if>
 		<td>Добро пожаловать, <b>${user.login }</b></td>
 		<td><a href="SignOutUser">Выйти</a></td>
 		<td><form action="search" method="get" autocomplete="off">
 		<input type="search" name="req" placeholder="Найти товар" required>
 		<input type="hidden" name="page" value="1">
 		<input type="submit" value="Найти"></form></td>
+		<td><button class="cart-btn" id="myBtn"></button></td>
 	</tr>
 </table>
 </div> <!-- header ender -->
 <!-- Корзина -->
-<button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
 <div class="modal-content">
     <span class="close">&times;</span>
@@ -45,7 +44,7 @@
     		<td>${cart.ownersLogin }</td>
     		<td>${cart.totalCost } руб.</td>
     	</tr>
-    </table>
+    </table><br>
     <table border="1">
     	<tr>
     		<td>ID товара</td>
@@ -75,7 +74,7 @@
 </div>
 	<script type="text/javascript" src="scripts/miniCart.js"></script>
 </div> <!-- корзина ender -->
-<div class="contents">
+<div>
 	<table>
 		<tr>
 			<td>Логин</td>
@@ -98,11 +97,16 @@
 			<td>${user.address }</td>
 		</tr>
  	</table>
- 	<input type="button" name="edit" value="Редактировать" onClick="window.location.href='./editProfile.jsp'">
- 	<input type="button" name="edit" value="Изменить пароль" onClick="window.location.href='./editPassword.jsp'">
-<form action="GetUntakenOrders" method="post">
-<input type="submit" value="Мои заказы">
-</form>
+ 	<div class="contents">
+ 	<form action="GetUntakenOrders" method="post">
+ 		<input type="button" name="edit" value="Редактировать" onClick="window.location.href='./editProfile.jsp'">
+ 		<input type="button" name="edit" value="Изменить пароль" onClick="window.location.href='./editPassword.jsp'">
+		<input type="submit" value="Мои заказы">
+		<c:if test="${user.role=='admin' }">
+			<input type="button" onClick="window.location.href='./adminPage.jsp'" value="Администрирование">
+		</c:if>
+	</form>
+</div>
 </div>
 <div class="errors">
 	<c:if test="${not empty msg }">

@@ -17,17 +17,17 @@
 <table>
 	<tr>
 		<td><a href="/WebShop/index.jsp">Домой</a></td>
-		<td><a href="/WebShop/catalog?page=1">Каталог</a></td>
+		<td><a href="/WebShop/catalog?page=1&sort=IDHigh2Low">Каталог</a></td>
 		<td><a href="/WebShop/cart.jsp">Корзина</a></td>
 		<td><a href="/WebShop/myProfile.jsp">Профиль</a></td>
 		<td>Добро пожаловать, <b>${user.login }</b></td>
 		<td><a href="/WebShop/SignOutUser">Выйти</a></td>
+		<td><button class="cart-btn" id="myBtn"></button></td>
 	</tr>
 </table>
 </div> <!-- header ender -->
 
 <!-- Корзина -->
-<button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
 <div class="modal-content">
     <span class="close">&times;</span>
@@ -43,7 +43,7 @@
     		<td>${cart.ownersLogin }</td>
     		<td>${cart.totalCost } руб.</td>
     	</tr>
-    </table>
+    </table><br>
     <table border="1">
     	<tr>
     		<td>ID товара</td>

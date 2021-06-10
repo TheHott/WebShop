@@ -16,7 +16,7 @@
 <table>
 	<tr>
 		<td><a href="index.jsp">Домой</a></td>
-		<td><a href="GetCatalog">Каталог</a></td>
+		<td><a href="./catalog?page=1&sort=IDHigh2Low">Каталог</a></td>
 		<td><a href="cart.jsp">Корзина</a></td>
 		<c:if test="${user==null }"><td><a href="login.jsp">Авторизация</a></td>
 		<td><a href="signUp.jsp">Регистрация</a></td></c:if>
@@ -27,11 +27,11 @@
 		<input type="search" name="req" placeholder="Найти товар" required>
 		<input type="hidden" name="page" value="1">
 		<input type="submit" value="Найти"></form></td>
+		<td><button class="cart-btn" id="myBtn"></button></td>
 	</tr>
 </table>
 </div> <!-- header ender -->
 <!-- Корзина -->
-<button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
 
   <!-- Modal content -->
@@ -49,7 +49,7 @@
     		<td>${cart.ownersLogin }</td>
     		<td>${cart.totalCost } руб.</td>
     	</tr>
-    </table>
+    </table><br>
     <table border="1">
     	<tr>
     		<td>ID товара</td>

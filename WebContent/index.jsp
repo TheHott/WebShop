@@ -11,12 +11,13 @@
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
 </head>
 <body>
+
 <div class="header">
 	<h1>Интернет-магазин компьютерной техники</h1>
 	<table>
 		<tr>
 			<td><b>Домой</b></td>
-			<td><a href="./catalog?page=1">Каталог</a></td>
+			<td><a href="./catalog?page=1&sort=IDHigh2Low">Каталог</a></td>
 			<td><a href="cart.jsp">Корзина</a></td>
 			<c:if test="${user==null }"><td><a href="login.jsp">Авторизация</a></td>
 			<td><a href="signUp.jsp">Регистрация</a></td></c:if>
@@ -27,12 +28,12 @@
 			<input type="search" name="req" placeholder="Найти товар" required>
 			<input type="hidden" name="page" value="1">
 			<input type="submit" value="Найти"></form></td>
+			<td><button class="cart-btn" id="myBtn"></button></td>
 		</tr>
 	</table>
 </div> <!-- header ender -->
 
 <!-- Корзина -->
-<button id="myBtn">Открыть корзину</button>
 <div id="myModal" class="modal">
 <div class="modal-content">
     <span class="close">&times;</span>
@@ -80,7 +81,7 @@
 </div> <!-- корзина ender -->
 
 <div class="contents">
-	<br><a href="testingSite.jsp">Тест функций не для юзеров</a><br>
+	<br><h6><a href="testingSite.jsp">Тест функций не для юзеров и не для гостей</a></h6><br>
 </div>
 
 <div class="errors">
